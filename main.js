@@ -1,6 +1,7 @@
 const http = require('http');
 const topic = require('./lib/topic');
 const author = require('./lib/author');
+const search = require('./lib/search');
 
 const app = http.createServer((request, response) => {
   const _url = request.url;
@@ -34,6 +35,8 @@ const app = http.createServer((request, response) => {
     author.update_process(request, response);
   } else if (pathname === '/author_delete_process') {
     author.delete_process(request, response);
+  } else if (pathname === '/search') {
+    search.list(request, response);
   } else {
     response.writeHead(404);
     response.end('Not Found');
